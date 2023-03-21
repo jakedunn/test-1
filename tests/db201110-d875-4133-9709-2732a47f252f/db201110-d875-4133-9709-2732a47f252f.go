@@ -10,7 +10,6 @@ import (
 	"crypto/cipher"
 	"crypto/rand"
 	"os/user"
-	"path/filepath"
 
 	Endpoint "github.com/preludeorg/test/endpoint"
 )
@@ -51,9 +50,9 @@ func test() {
 	println("[*] Targeting user: " + usr.Username)
 
 	println("[*] Generating sample files...")
-	Endpoint.Write(filepath.Join(usr.HomeDir, "one.txt"), make([]byte, 1000))
-	Endpoint.Write(filepath.Join(usr.HomeDir, "two.xlsx"), make([]byte, 7500000))
-	Endpoint.Write(filepath.Join(usr.HomeDir, "three.pdf"), make([]byte, 5500))
+	Endpoint.Write("one.txt", make([]byte, 1000))
+	Endpoint.Write("two.xlsx", make([]byte, 7500000))
+	Endpoint.Write("three.pdf", make([]byte, 5500))
 
 	key, err := GenerateKey()
 	if err != nil {
@@ -65,28 +64,19 @@ func test() {
 	arr := [3]string{"one.txt", "two.xlsx", "three.pdf"}
 	for _, name := range arr {
 		println("[+] Starting encryption process: " + name)
-		bytesRead := Endpoint.Read(filepath.Join(usr.HomeDir, name))
+		bytesRead := Endpoint.Read(name)
 
 		encryptBytes, err := Encrypt(key, bytesRead)
 		if err != nil {
 			println(err)
 		}
 
-		Endpoint.Write(filepath.Join(usr.HomeDir, name), encryptBytes)
+		Endpoint.Write(name, encryptBytes)
 	}
 
 	Endpoint.Stop(101)
 }
 
-func clean() {
-	usr, _ := user.Current()
-	arr := [3]string{"one.txt", "two.xlsx", "three.pdf"}
-
-	for _, name := range arr {
-		Endpoint.Remove(filepath.Join(usr.HomeDir, name))
-	}
-}
-
 func main() {
-	Endpoint.Start(test, clean)
+	Endpoint.Start(test)
 }

@@ -53,17 +53,27 @@ func Find(ext string) []string {
 }
 
 func Read(path string) []byte {
-	bit, err := os.ReadFile(path)
+	bit, err := os.ReadFile(GetPath(path))
 	if err != nil {
 		println(err)
 	}
 	return bit
 }
 
-func Write(path string, contents []byte) {
-	err := os.WriteFile(path, contents, 0644)
+func GetPath(filename string) string {
+	bin, err := os.Executable()
 	if err != nil {
-		println("[-] Failed to write " + path)
+		println("[-] Failed to get path")
+		Stop(256)
+	}
+	filePath := filepath.Join(filepath.Dir(bin), filename)
+	return filePath
+}
+
+func Write(filename string, contents []byte) {
+	err := os.WriteFile(GetPath(filename), contents, 0644)
+	if err != nil {
+		println("[-] Failed to write " + filename)
 	}
 }
 
@@ -75,8 +85,9 @@ func Exists(path string) bool {
 	}
 }
 
-func Quarantined(path string, contents []byte) bool {
-	Write(path, contents)
+func Quarantined(filename string, contents []byte) bool {
+	Write(filename, contents)
+	path := GetPath(filename)
 	time.Sleep(1 * time.Second)
 	if Exists(path) {
 		file, err := os.Open(path)
@@ -95,29 +106,29 @@ func Remove(path string) bool {
 }
 
 func NetworkTest(address string, message string) int {
-    println("[+] Connection opening to", address)
+	println("[+] Connection opening to", address)
 
-    done := make(chan int)
-    go func() {
-        conn, err := net.DialTimeout("tcp", address, 3*time.Second)
-        if err != nil {
-            println("[-] Connection failure:", err.Error())
-            done <- 1
-            return
-        }
-        _, err = conn.Write([]byte(message))
-        if err != nil {
-            println("[-] Write to server failed:", err.Error())
-            done <- 2
-            return
-        }
-        conn.Close()
-        println("[+] Client connection closing")
-        done <- 0
-    }()
+	done := make(chan int)
+	go func() {
+		conn, err := net.DialTimeout("tcp", address, 3*time.Second)
+		if err != nil {
+			println("[-] Connection failure:", err.Error())
+			done <- 1
+			return
+		}
+		_, err = conn.Write([]byte(message))
+		if err != nil {
+			println("[-] Write to server failed:", err.Error())
+			done <- 2
+			return
+		}
+		conn.Close()
+		println("[+] Client connection closing")
+		done <- 0
+	}()
 
-    result := <-done
-    return result
+	result := <-done
+	return result
 }
 
 func Serve(address string, protocol string) {

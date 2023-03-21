@@ -7,8 +7,6 @@ package main
 
 import (
 	_ "embed"
-	"os"
-	"path/filepath"
 	"runtime"
 
 	Endpoint "github.com/preludeorg/test/endpoint"
@@ -16,8 +14,7 @@ import (
 
 //go:embed Invoke-MS16032.ps1
 var ms16032 []byte
-var dir, _ = os.Getwd()
-var path = filepath.Join(dir, "Invoke-MS16032.ps1")
+var path = "Invoke-MS16032.ps1"
 
 var supported = map[string][]string{
 	"windows": {"powershell.exe", "-c", path},
