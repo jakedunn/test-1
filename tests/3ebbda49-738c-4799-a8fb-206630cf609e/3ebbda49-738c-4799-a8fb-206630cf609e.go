@@ -7,6 +7,7 @@ package main
 
 import (
 	"runtime"
+	"time"
 
 	Endpoint "github.com/preludeorg/test/endpoint"
 )
@@ -26,5 +27,15 @@ func test() {
 }
 
 func main() {
-	Endpoint.Start(test)
+	println("[+] Starting test")
+	// Adding raw Endpoint.Start code so that we can safely update the Endpoint.Stop to exit 100 instead of 102.
+	go func() {
+		test()
+	}()
+
+	select {
+	case <-time.After(10 * time.Second):
+		println("[+] Timeout reached as intended.")
+		Endpoint.Stop(100)
+	}
 }
