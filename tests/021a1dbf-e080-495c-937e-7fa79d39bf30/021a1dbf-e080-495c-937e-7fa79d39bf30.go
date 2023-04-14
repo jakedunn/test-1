@@ -18,7 +18,7 @@ var policy = map[string][]string{
 }
 
 var search = map[string][]string{
-	"windows": {"powershell.exe", "-c", "Get-ChildItem %userprofile% -File -Recurse | Select-String -List -Pattern '^P.{20}$' | Select-Object -ExpandProperty Path"},
+	"windows": {"powershell.exe", "-c", "Get-ChildItem %userprofile% -File -Recurse -Depth 1 | Select-String -List -Pattern '^P.{20}$' | Select-Object -ExpandProperty Path"},
 	"darwin":  {"bash", "-c", "find ~ -maxdepth 1 -type f -exec grep -E ^P.{20} {} \\;"},
 	"linux":   {"bash", "-c", "find ~ -maxdepth 1 -type f -exec grep -E ^P.{20} {} \\;"},
 }
