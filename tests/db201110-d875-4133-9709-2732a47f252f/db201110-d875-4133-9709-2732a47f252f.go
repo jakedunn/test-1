@@ -9,7 +9,6 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
-	"os/user"
 
 	Endpoint "github.com/preludeorg/test/endpoint"
 )
@@ -46,8 +45,6 @@ func GenerateKey() ([]byte, error) {
 }
 
 func test() {
-	usr, _ := user.Current()
-	println("[*] Targeting user: " + usr.Username)
 
 	println("[*] Generating sample files...")
 	Endpoint.Write("one.txt", make([]byte, 1000))
