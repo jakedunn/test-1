@@ -5,7 +5,7 @@ This test drops a defanged Mimikatz executable. Mimikatz is a post-exploitation 
 Example Output:
 ```
 [+] Extracting file for quarantine test
-[+] Pausing for 1 second to gauge defensive reaction
+[+] Pausing for 3 seconds to gauge defensive reaction
 [-] Malicious file was not caught
 ```
 

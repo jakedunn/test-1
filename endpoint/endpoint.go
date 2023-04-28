@@ -88,7 +88,7 @@ func Exists(path string) bool {
 func Quarantined(filename string, contents []byte) bool {
 	Write(filename, contents)
 	path := GetPath(filename)
-	time.Sleep(1 * time.Second)
+	time.Sleep(3 * time.Second)
 	if Exists(path) {
 		file, err := os.Open(path)
 		if err != nil {
