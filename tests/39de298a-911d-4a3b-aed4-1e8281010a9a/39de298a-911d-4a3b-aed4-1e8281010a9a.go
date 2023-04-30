@@ -10,12 +10,12 @@ import (
 )
 
 func test() {
-	Endpoint.Stop(100)
-}
-
-func clean() {
+	if Endpoint.IsSecure() {
+		Endpoint.Stop(100)
+	}
+	Endpoint.Stop(101)
 }
 
 func main() {
-	Endpoint.Start(test, clean)
+	Endpoint.Start(test)
 }

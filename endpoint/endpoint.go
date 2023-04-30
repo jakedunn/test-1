@@ -3,11 +3,11 @@ package Endpoint
 import (
 	"fmt"
 	"io/fs"
-	"net"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"time"
+	"runtime"
 )
 
 type fn func()
@@ -53,25 +53,15 @@ func Find(ext string) []string {
 }
 
 func Read(path string) []byte {
-	bit, err := os.ReadFile(GetPath(path))
+	bit, err := os.ReadFile(pwd(path))
 	if err != nil {
 		println(err)
 	}
 	return bit
 }
 
-func GetPath(filename string) string {
-	bin, err := os.Executable()
-	if err != nil {
-		println("[-] Failed to get path")
-		Stop(256)
-	}
-	filePath := filepath.Join(filepath.Dir(bin), filename)
-	return filePath
-}
-
 func Write(filename string, contents []byte) {
-	err := os.WriteFile(GetPath(filename), contents, 0644)
+	err := os.WriteFile(pwd(filename), contents, 0644)
 	if err != nil {
 		println("[-] Failed to write " + filename)
 	}
@@ -87,7 +77,7 @@ func Exists(path string) bool {
 
 func Quarantined(filename string, contents []byte) bool {
 	Write(filename, contents)
-	path := GetPath(filename)
+	path := pwd(filename)
 	time.Sleep(3 * time.Second)
 	if Exists(path) {
 		file, err := os.Open(path)
@@ -105,57 +95,6 @@ func Remove(path string) bool {
 	return e == nil
 }
 
-func NetworkTest(address string, message string) int {
-	println("[+] Connection opening to", address)
-
-	done := make(chan int)
-	go func() {
-		conn, err := net.DialTimeout("tcp", address, 3*time.Second)
-		if err != nil {
-			println("[-] Connection failure:", err.Error())
-			done <- 1
-			return
-		}
-		_, err = conn.Write([]byte(message))
-		if err != nil {
-			println("[-] Write to server failed:", err.Error())
-			done <- 2
-			return
-		}
-		conn.Close()
-		println("[+] Client connection closing")
-		done <- 0
-	}()
-
-	result := <-done
-	return result
-}
-
-func Serve(address string, protocol string) {
-	println("[+] Serving: ", address)
-	listen, err1 := net.Listen(protocol, address)
-	if err1 != nil {
-		println("Listener (serve) failed:", err1.Error())
-		os.Exit(1)
-	}
-	defer listen.Close()
-
-	conn, err2 := listen.Accept()
-	if err2 != nil {
-		println("[-] Listener (read) failed:", err2.Error())
-		os.Exit(1)
-	}
-
-	buffer := make([]byte, 1024)
-	_, err3 := conn.Read(buffer)
-	if err3 != nil {
-		println("[-] Connection (read) failed:", err3.Error())
-	}
-
-	conn.Write([]byte("hello"))
-	conn.Close()
-}
-
 func Shell(args []string) (string, error) {
 	cmd := exec.Command(args[0], args[1:]...)
 	stdout, err := cmd.Output()
@@ -170,7 +109,6 @@ func Shell(args []string) (string, error) {
 }
 
 func IsAvailable(programs ...string) bool {
-
 	for _, program := range programs {
 		_, err := exec.LookPath(program)
 		if err == nil {
@@ -178,4 +116,25 @@ func IsAvailable(programs ...string) bool {
 		}
 	}
 	return false
+}
+
+func isSecure() bool {
+	if _, err := os.Stat("/.dockerenv"); err == nil {
+        return true
+    } else if runtime.GOOS == "ios" {
+		return true
+	} else if runtime.GOOS == "android" {
+		return true
+	}
+	return false
+}
+
+func pwd(filename string) string {
+	bin, err := os.Executable()
+	if err != nil {
+		println("[-] Failed to get path")
+		Stop(256)
+	}
+	filePath := filepath.Join(filepath.Dir(bin), filename)
+	return filePath
 }
