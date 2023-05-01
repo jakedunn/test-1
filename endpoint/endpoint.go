@@ -6,8 +6,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"time"
 	"runtime"
+	"time"
 )
 
 type fn func()
@@ -118,10 +118,10 @@ func IsAvailable(programs ...string) bool {
 	return false
 }
 
-func isSecure() bool {
+func IsSecure() bool {
 	if _, err := os.Stat("/.dockerenv"); err == nil {
-        return true
-    } else if runtime.GOOS == "ios" {
+		return true
+	} else if runtime.GOOS == "ios" {
 		return true
 	} else if runtime.GOOS == "android" {
 		return true
