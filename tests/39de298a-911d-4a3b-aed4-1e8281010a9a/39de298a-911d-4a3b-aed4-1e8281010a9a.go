@@ -13,9 +13,6 @@ func test() {
 	Endpoint.Stop(100)
 }
 
-func clean() {
-}
-
 func main() {
-	Endpoint.Start(test, clean)
+	Endpoint.Start(test)
 }
