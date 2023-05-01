@@ -10,10 +10,7 @@ import (
 )
 
 func test() {
-	if Endpoint.IsSecure() {
-		Endpoint.Stop(100)
-	}
-	Endpoint.Stop(101)
+	Endpoint.Stop(100)
 }
 
 func main() {
