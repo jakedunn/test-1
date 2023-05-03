@@ -1,6 +1,6 @@
 /*
 ID: 8f9558f3-d451-46e3-bdda-97378c1e8ce4
-NAME: Will your computer quarantine a malicious HTA file?
+NAME: Malicious HTA
 CREATED: 2023-04-11
 */
 package main

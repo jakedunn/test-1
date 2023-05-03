@@ -1,6 +1,6 @@
 /*
 ID: 9f37becc-6dd0-4e57-a78b-577e515f83fc
-NAME: Will your computer quarantine a malicious MSI file?
+NAME: IcedID
 CREATED: 2023-04-17
 */
 package main

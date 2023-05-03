@@ -1,6 +1,6 @@
 /*
 ID: 6fcb1413-4992-4f4a-a0b4-3765194489f9
-NAME: Will your computer quarantine Cobalt Strike malicious DLL file?
+NAME: Cobalt Strike
 CREATED: 2023-04-25
 */
 package main

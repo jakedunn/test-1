@@ -1,6 +1,6 @@
 /*
 ID: b74ad239-2ddd-4b1e-b608-8397a43c7c54
-NAME: Will your computer quarantine a malicious Office document?
+NAME: Malicious Office Document
 CREATED: 2023-01-03
 */
 package main

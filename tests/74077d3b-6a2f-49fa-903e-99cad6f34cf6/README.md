@@ -1,19 +1,26 @@
-# Will your computer quarantine oRAT Malware?
+# oRAT Malware
 
-This test drops a defanged oRAT malware executable file, a remote access trojan that targets Windows, Linux, and macOS platforms. Written in Go, it has been recently attributed to Earth Berberoka, also known as GamblingPuppet, a new APT group. This group has recently been observed targeting gambling websites, and it is believed they are responsible for creating this malware. This test will monitor if any endpoint defense quarantines the malware.
+<kbd>[UNIT:ANTIVIRUS](https://docs.preludesecurity.com/docs/security-policy#antivirus)</kbd>
+<kbd>[ALERT:-](#the-url)</kbd>
+
+This test drops a defanged oRAT malware executable file, a remote access trojan that targets Windows, Linux, and macOS platforms. Written in Go, oRAT was attributed to Earth Berberoka, also known as GamblingPuppet, a new APT group in 2022. This group has recently been observed targeting gambling websites, and it is believed they are responsible for creating this malware. This test will monitor if any endpoint defense quarantines the malware.
+
+## How
+
+> Safety: the malware used has been defanged, so even if run, it will immediately exit.
+
+The malware file is extracted from the test and written to a user-owned directory. The test then waits briefly before running a few checks to determine if it was responded to (not just detected) by any defensive products on the endpoint.
 
 Example Output:
-
-```
+```bash
 [+] Extracting file for quarantine test
 [+] Pausing for 3 seconds to gauge defensive reaction
 [-] Malicious file was not caught
 ```
 
-Defenses should quarantine files with known signatures immediately.
+## Resolution
 
-## How
+If this test fails:
 
-> Safety: the oRat malware has been defanged, so even if run, it will immediately exit.
-
-An executable file of the oRAT malware is extracted from the test and written to a user-owned directory. The test then waits briefly before running a few checks to determine if it was responded to (not just detected) by any defensive products on the endpoint.
+* Ensure you have an antivirus program installed and running.
+* If using an EDR, make sure the antivirus capability is enabled and turned up, appropriately

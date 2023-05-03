@@ -1,6 +1,6 @@
 /*
 ID: d36c6715-ac9d-4d22-b6d3-cc778dac473b
-NAME: Can a regular user run administrator-level commands?
+NAME: CVE-2019-14287 and CVE-2016-0099
 CREATED: 2023-02-15
 */
 package main

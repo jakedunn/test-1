@@ -1,6 +1,6 @@
 /*
 ID: 994c0cb2-a84c-41b2-ab46-7d4d104c09d8
-NAME: Will your computer quarantine QuakBot malware?
+NAME: QuakBot Malware
 CREATED: 2023-03-27
 */
 package main

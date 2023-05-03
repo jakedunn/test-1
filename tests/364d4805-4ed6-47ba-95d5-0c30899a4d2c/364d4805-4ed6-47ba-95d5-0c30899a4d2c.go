@@ -1,6 +1,6 @@
 /*
 ID: 364d4805-4ed6-47ba-95d5-0c30899a4d2c
-NAME: Will your computer quarantine Yanluowang ransomware?
+NAME: Yanluowang Ransomware
 CREATED: 2023-04-25
 */
 package main

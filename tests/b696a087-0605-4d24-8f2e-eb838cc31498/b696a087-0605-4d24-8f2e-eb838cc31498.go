@@ -1,6 +1,6 @@
 /*
 ID: b696a087-0605-4d24-8f2e-eb838cc31498
-NAME: Will your computer quarantine AsyncRAT malware?
+NAME: AsyncRAT Malware
 CREATED: 2023-04-03
 */
 package main

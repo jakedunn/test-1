@@ -1,6 +1,6 @@
 /*
 ID: a0f02780-7807-4d8f-8f8e-82e16f56e35c
-NAME: Will your computer quarantine Mimikatz?
+NAME: Mimikatz
 CREATED: 2023-04-17
 */
 package main
