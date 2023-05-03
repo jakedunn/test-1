@@ -23,4 +23,4 @@ The malware file is extracted from the test and written to a user-owned director
 If this test fails:
 
 * Ensure you have an antivirus program installed and running.
-* Antivirus is typically a setting within an EDR, which needs to be enabled and configured.
+* If using an EDR, make sure the antivirus capability is enabled and turned up, appropriately
