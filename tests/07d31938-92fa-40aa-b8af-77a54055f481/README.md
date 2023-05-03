@@ -16,7 +16,7 @@ Example Output:
 
 > Safety: the malware used has been defanged, so even if run, it will immediately exit.
 
-An executable file of the Redline Stealer Malware is extracted from the test and written to a user-owned directory. The test then waits briefly before running a few checks to determine if it was responded to (not just detected) by any defensive products on the endpoint.
+The malware file is extracted from the test and written to a user-owned directory. The test then waits briefly before running a few checks to determine if it was responded to (not just detected) by any defensive products on the endpoint.
 
 ## Resolution
 
