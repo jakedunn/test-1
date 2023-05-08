@@ -1,6 +1,6 @@
 /*
 ID: db201110-d875-4133-9709-2732a47f252f
-NAME: Common Ransomware Attempt
+NAME: Common Ransomware
 CREATED: 2023-01-03
 */
 package main

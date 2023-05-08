@@ -1,4 +1,4 @@
-# Common Ransomware Attempt
+# Common Ransomware
 
 <kbd>[UNIT:NGAV](https://docs.preludesecurity.com/docs/security-policy#ngav)</kbd>
 <kbd>[ALERT:-](#the-url)</kbd>
