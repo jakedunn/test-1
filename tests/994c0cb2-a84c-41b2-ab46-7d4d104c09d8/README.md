@@ -1,4 +1,4 @@
-# QuakBot Malware
+# QuakBot Trojan
 
 <kbd>[UNIT:ANTIVIRUS](https://docs.preludesecurity.com/docs/security-policy#antivirus)</kbd>
 <kbd>[ALERT:-](#the-url)</kbd>

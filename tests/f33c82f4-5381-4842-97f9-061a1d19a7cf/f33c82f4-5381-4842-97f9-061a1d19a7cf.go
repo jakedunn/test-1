@@ -1,6 +1,6 @@
 /*
 ID: f33c82f4-5381-4842-97f9-061a1d19a7cf
-NAME: BugSplat malware
+NAME: BugSplat Trojan
 CREATED: 2023-03-20
 */
 package main

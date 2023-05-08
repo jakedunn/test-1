@@ -1,4 +1,4 @@
-# AsyncRAT Malware
+# AsyncRAT Rootkit
 
 <kbd>[UNIT:ANTIVIRUS](https://docs.preludesecurity.com/docs/security-policy#antivirus)</kbd>
 <kbd>[ALERT:-](#the-url)</kbd>

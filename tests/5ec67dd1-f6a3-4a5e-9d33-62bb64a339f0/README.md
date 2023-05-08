@@ -1,4 +1,4 @@
-# LockBit
+# LockBit Ransomware
 
 <kbd>[UNIT:ANTIVIRUS](https://docs.preludesecurity.com/docs/security-policy#antivirus)</kbd>
 <kbd>[ALERT:AA23-075a](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-075a)</kbd>

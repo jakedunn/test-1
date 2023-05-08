@@ -1,4 +1,4 @@
-# Cobalt Strike
+# Cobalt Strike Trojan
 
 <kbd>[UNIT:ANTIVIRUS](https://docs.preludesecurity.com/docs/security-policy#antivirus)</kbd>
 <kbd>[ALERT:AR21-148a](https://www.cisa.gov/news-events/analysis-reports/ar21-148a)</kbd>

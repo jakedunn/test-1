@@ -1,6 +1,6 @@
 /*
 ID: 5ec67dd1-f6a3-4a5e-9d33-62bb64a339f0
-NAME: LockBit
+NAME: LockBit Ransomware
 CREATED: 2023-05-01
 */
 package main

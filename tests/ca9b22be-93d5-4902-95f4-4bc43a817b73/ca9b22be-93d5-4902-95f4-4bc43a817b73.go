@@ -1,6 +1,6 @@
 /*
 ID: ca9b22be-93d5-4902-95f4-4bc43a817b73
-NAME: Colour-Blind Malware
+NAME: Colour-Blind Trojan
 CREATED: 2023-03-13
 */
 package main

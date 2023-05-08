@@ -1,6 +1,6 @@
 /*
 ID: 74077d3b-6a2f-49fa-903e-99cad6f34cf6
-NAME: oRAT Malware
+NAME: oRAT Rootkit
 CREATED: 2023-03-07
 */
 package main
