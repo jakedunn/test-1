@@ -1,4 +1,4 @@
-# Long Running VST
+# Safety Check
 
 <kbd>[UNIT:HEALTH](https://docs.preludesecurity.com/docs/security-policy#health)</kbd>
 <kbd>[ALERT:-](#the-url)</kbd>
