@@ -126,6 +126,7 @@ func IsSecure() bool {
 	} else if runtime.GOOS == "android" {
 		return true
 	}
+	println("[-] Endpoint is not secure by design")
 	return false
 }
 
