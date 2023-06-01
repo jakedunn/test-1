@@ -1,3 +1,7 @@
+# This repository is now archived and will no longer be updated. 
+
+> Learn more about Detect here: https://docs.preludesecurity.com/docs/the-basics
+
 # Verified Security Tests
 
 A [VST](https://docs.preludesecurity.com/docs/tests) is a production ready TTP. Tests from this repository are automatically loaded into [Detect](https://platform.preludesecurity.com) and can be run immediately on any endpoint.
